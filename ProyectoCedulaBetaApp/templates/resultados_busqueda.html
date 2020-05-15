@@ -1,0 +1,95 @@
+{% extends "index.html"%}
+{% load static %}
+
+{% block main %}
+<div>
+
+
+        {% if cedulas%}
+            <!-- Contact Section Heading-->
+            <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Resultados de: <strong>{{query}}</strong></h3>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead class="thead-light">
+                        <th ><h5 class="masthead-heading text-uppercase mb-0 text-center" >Nombres y Apellidos</h5></th>
+                        <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Cédula </h5></th>
+                        <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Estado </h5></th>
+                        <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Municipio </h5></th>
+                        <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Parroquia </h5></th>
+                    </thead>
+                    <tbody>
+                        {% for ced in cedulas %}
+                        <tr>
+                            <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.nombre}}</h5></td>
+                            <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.cedula}}</h5></td>
+                            <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.estado}}</h5></td>
+                            <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.municipio}}</h5></td>
+                            <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.parroquia}}</h5></td>
+                            
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+
+
+                <div class="form-control  text-uppercase text-center col-lg-4 ml-auto"><h5>Cédulas encontradas: {{cedulas|length}}</h5></div>
+
+                            <form action="/cedula/" method="GET">
+                    <button class="btn btn-primary btn-xl col-rg-4 ml-auto" id="btn_buscar_regresar" type="submit" value="Regresar">Regresar</button>
+                </form>
+
+        {% elif nombres%}
+                    <!-- Contact Section Heading-->
+            <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Resultados de: <strong>{{query}}</strong></h3>
+         
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead class="thead-light">
+                    <th><h5 class="masthead-heading text-uppercase mb-0 text-center" >Nombres y Apellidos</h5></th>
+                    <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Cédula </h5></th>
+                    <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Estado </h5></th>
+                    <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Municipio </h5></th>
+                    <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Parroquia </h5></th>
+                </thead>
+                <tbody>
+                    {% for nom in nombres %}
+                    <tr>
+                        <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.nombre}}</h5></td>
+                        <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.cedula}}</h5></td>
+                        <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.estado}}</h5></td>
+                        <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.municipio}}</h5></td>
+                        <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.parroquia}}</h5></td>
+                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            </div>
+            <div class="form-control  text-uppercase text-center col-lg-4 ml-auto"><h5>Nombres encontrados: {{nombres|length}}</h5></div>
+
+            <form action="/nombre/" method="GET">
+                <button class="btn btn-primary btn-xl" id="btn_buscar_regresar" type="submit" value="Regresar">Regresar</button>
+            </form>
+        {% else %}
+            <p>No se encontraron resultados</p> 
+        {% endif %}
+          
+</div>
+{% endblock %} 
+
+
