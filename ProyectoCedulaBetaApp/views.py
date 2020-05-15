@@ -10,7 +10,7 @@ def contacto(request):
         subject=request.POST["name"]
         message=request.POST["name"]  + " le envia este mensaje. " + request.POST["message"] + ".Correo: " + request.POST["email"] + ".Telefono: " + request.POST["phone"]
         email_from=settings.EMAIL_HOST_USER
-        recipient_list=["eam.rodriguez@gmail.com"]
+        recipient_list=["tucedulavenezuela@gmail.com"]
         send_mail(subject,message,email_from,recipient_list)
         return render(request, "gracias.html")
     return render(request, "contacto.html")
@@ -30,7 +30,7 @@ def buscar_cedula(request):
         if len(cedula)>9:
             mensaje = "Texto de la cedula es demasiado largo"
         else:
-            cedulas=Cedula.objects.filter(cedula__icontains=cedula)  # __icontains es como like nombre ="", en ambos lados
+            cedulas=Cedula.objects.filter(nu_cedula__icontains=cedula)  # __icontains es como like nombre ="", en ambos lados
             return render(request, "resultados_busqueda.html",{"cedulas":cedulas,"query":cedula})
     else:
         mensaje="Por favor, debe ingresar el numero de cedula para poder realizar la busqueda."
@@ -42,7 +42,7 @@ def buscar_nombre(request):
         if len(nombre)>20:
             mensaje = "Texto del nombre es demasiado largo"
         else:
-            nombres=Cedula.objects.filter(nombre__icontains=nombre)  # __icontains es como like nombre ="", en ambos lados
+            nombres=Cedula.objects.filter(tx_nombre_apellido__icontains=nombre)  # __icontains es como like nombre ="", en ambos lados
             return render(request, "resultados_busqueda.html",{"nombres":nombres,"query":nombre})
     else:
         mensaje="Por favor, debe ingresar el nombre para poder realizar la busqueda."

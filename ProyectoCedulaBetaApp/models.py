@@ -3,9 +3,12 @@ from django.db import models
 # Create your models here.
 
 class Cedula(models.Model):
-    nombre=models.CharField(max_length=50)
-    cedula=models.IntegerField()
-    estado=models.CharField(max_length=50)
-    municipio=models.CharField(max_length=50)
-    parroquia=models.CharField(max_length=50)
-    direccion=models.TextField()
+    tx_nac=models.CharField(max_length=20)
+    nu_cedula=models.IntegerField()
+    tx_nombre_apellido=models.CharField(max_length=100)
+    tx_estado=models.CharField(max_length=100)
+    tx_municipio=models.CharField(max_length=100)
+    tx_parroquia=models.CharField(max_length=100)
+    tx_centro_electoral=models.CharField(max_length=100)
+    tx_direccion=models.TextField()
+
