@@ -1,0 +1,61 @@
+{% extends "index.html"%}
+{% load static %}
+
+{% block main %}
+    <!-- Contact Section Heading-->
+    <div class="divider-custom">
+        <div class="row">
+            <div class="col-sm-4 mb-5 text-right "><img src="{% static 'assets/img/logo_tucedula 107x104.png'%}"/></div>
+            <div class="col-sm-8 mb-5 "> <h4 class="font-weight-light text-justify"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4></div>
+            <!-- Buscar por Cedula-->
+            <div class="col-sm-4">
+                <form action="/buscar_cedula/"  method="GET">
+                    <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Cédula:  </h5>
+                    <input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula" required="required" data-validation-required-message="Please enter your cédula." />
+                    <p class="help-block text-white"></p>
+                    <button class="btn btn-primary btn-xl" id="btn_buscar_cedula" type="submit" value="Buscar">Buscar</button>
+                </form> 
+            </div>
+                        <!-- Tabla de Resultados por Cedula-->
+            <div class="col-sm-8">           
+                <h2 class="page-section-sub-heading text-center text-uppercase text-secondary mb-0">Resultados de: {{query}}</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                {% if cedulas%}
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead class="thead-light">
+                                <th ><h6 class="masthead-sub-heading text-uppercase mb-0 text-center" >Nombres y Apellidos</h6></th>
+                                <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Cédula </h6></th>
+                                <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Estado </h6></th>
+                                <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Municipio </h6></th>
+                                {% comment %} <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Parroquia </h5></th> {% endcomment %}
+                            </thead>
+                            <tbody>
+                                {% for ced in cedulas %}
+                                <tr>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.tx_nombre_apellido}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.nu_cedula}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.tx_estado}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.tx_municipio}}</h6></td>
+                                    {% comment %} <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{ced.parroquia}}</h5></td> {% endcomment %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-control  text-uppercase text-center col-lg-6 ml-auto"><h5>Cédulas encontradas: {{cedulas|length}}</h5></div>
+                {% else %}
+                    <div class="form-control  text-uppercase text-center col-lg-6 ml-auto"><h5>Cédulas encontradas: {{nombres|length}}</h5></div>
+                {% endif %}
+            </div>   
+        </div>
+    </div>
+
+{% endblock %} 
+
+

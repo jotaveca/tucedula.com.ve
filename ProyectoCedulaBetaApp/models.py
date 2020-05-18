@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.forms import ModelForm
 # Create your models here.
 
 class Cedula(models.Model):
@@ -11,4 +12,3 @@ class Cedula(models.Model):
     tx_parroquia=models.CharField(max_length=100)
     tx_centro_electoral=models.CharField(max_length=100)
     tx_direccion=models.TextField()
-

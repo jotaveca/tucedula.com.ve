@@ -21,6 +21,9 @@ def busqueda_cedula(request):
 def busqueda_nombre(request):
     return render(request, "busqueda_nombre.html")
 
+def busqueda_mapa(request):
+    return render(request, "busqueda_mapa.html")
+
 def index(request):
     return render(request, "index.html")
 
@@ -31,7 +34,7 @@ def buscar_cedula(request):
             mensaje = "Texto de la cedula es demasiado largo"
         else:
             cedulas=Cedula.objects.filter(nu_cedula__icontains=cedula)  # __icontains es como like nombre ="", en ambos lados
-            return render(request, "resultados_busqueda.html",{"cedulas":cedulas,"query":cedula})
+            return render(request, "resultados_busqueda_cedula.html",{"cedulas":cedulas,"query":cedula})
     else:
         mensaje="Por favor, debe ingresar el numero de cedula para poder realizar la busqueda."
     return HttpResponse(mensaje)
@@ -39,11 +42,23 @@ def buscar_cedula(request):
 def buscar_nombre(request):
     if request.GET["nom"]:
         nombre=request.GET["nom"]
-        if len(nombre)>20:
+        if len(nombre)>50:
             mensaje = "Texto del nombre es demasiado largo"
         else:
             nombres=Cedula.objects.filter(tx_nombre_apellido__icontains=nombre)  # __icontains es como like nombre ="", en ambos lados
-            return render(request, "resultados_busqueda.html",{"nombres":nombres,"query":nombre})
+            return render(request, "resultados_busqueda_nombre.html",{"nombres":nombres,"query":nombre})
+    else:
+        mensaje="Por favor, debe ingresar el nombre para poder realizar la busqueda."
+    return HttpResponse(mensaje)
+
+def buscar_nombre_cantidad(request):
+    if request.GET["nom"]:
+        nombre=request.GET["nom"]
+        if len(nombre)>50:
+            mensaje = "Texto del nombre es demasiado largo"
+        else:
+            nombres=Cedula.objects.filter(tx_nombre_apellido__icontains=nombre)  # __icontains es como like nombre ="", en ambos lados
+            return render(request, "busqueda_nombre_cantidad.html",{"nombres":nombres,"query":nombre})
     else:
         mensaje="Por favor, debe ingresar el nombre para poder realizar la busqueda."
     return HttpResponse(mensaje)
