@@ -27,7 +27,7 @@
                         {% comment %} <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/mapa/">Buscar en el Mapa</a></li> {% endcomment %}
                         {% comment %} <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Formulario</a></li> {% endcomment %}
                         {% comment %} <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Quienes Somos</a></li> {% endcomment %}
-                        <li class="nav-item mx-0 mx-lg-1 text-uppercase"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contacto/">Contactanos</a></li>
+                        <li class="nav-item mx-0 mx-lg-1 text-uppercase"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contacto/">Contáctanos</a></li>
                     </ul>
                 </div>
             </div>
@@ -35,16 +35,17 @@
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5" src="{% static 'assets/img/logo_tucedula 15x15.png'%}" alt="" /><!-- Masthead Heading-->
+                <!-- Masthead Avatar Image--><img class="masthead-avatar mb-8" src="{% static 'assets/img/logo_tucedula 15x15.png'%}" alt="" /><!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">Tu Cédula</h1>
                 <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
+                {% comment %} <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
-                </div>
+                </div> {% endcomment %}
+                <h4 class="font-weight-light text-center"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Consulta - Revisa - Verifica</p>
+               {% comment %} <p class="masthead-subheading font-weight-light mb-0">Consulta - Revisa - Verifica</p> {% endcomment %}
             </div>
         </header>
         <section class="page-section">
@@ -54,15 +55,16 @@
  
                 <div class="divider-custom">
                     <div class="row">
-                        <div class="col-sm-4 mb-5 text-right "><img src="{% static 'assets/img/logo_tucedula 107x104.png'%}"/></div>
+                       {% comment %}  <div class="col-sm-4 mb-5 text-right "><img src="{% static 'assets/img/logo_tucedula 107x104.png'%}"/></div>
                         <div class="col-sm-8 mb-5 "> <h4 class="font-weight-light text-justify"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4></div>
+                        {% endcomment %}
                         <!-- Buscar por Cedula-->
                         <div class="col-sm-4 ">
                         <div class="card m-1 p-2">
 
                             <form action="/buscar_cedula/"  method="GET">
                                 <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Cédula:  </h5>
-                                <input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula" required="required" data-validation-required-message="Please enter your cédula." />
+                                <input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula de identidad" required="required" data-validation-required-message="Please enter your cédula." />
                                 <p class="help-block text-white"></p>
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_cedula" type="submit" value="Buscar">Buscar</button>
                             </form> 
@@ -73,7 +75,7 @@
                         <div class="card m-1 p-2">
                             <form action="/buscar_nombre/" method="GET">
                                 <h5 class="page-section-sub-heading text-left text-uppercase text-secondary mb-4">Buscar por Nombres:  </h5>
-                                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
+                                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombres y/o apellidos" required="required" data-validation-required-message="Please enter your nombre." />
                                 <p class="help-block text-white"></p>
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
                             </form>
@@ -83,8 +85,8 @@
                         <div class="col-sm-4 ">
                         <div class="card m-1 p-2">
                             <form action="/buscar_nombre_cantidad/" method="GET">
-                                <h5 class="page-section-sub-heading text-left text-uppercase text-secondary mb-0">¿Cuantas personas se llaman como yo?</h5>
-                                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
+                                <h5 class="page-section-sub-heading text-left text-uppercase text-secondary mb-0">¿Cuántas personas se llaman como yo?</h5>
+                                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombres y/o apellidos" required="required" data-validation-required-message="Please enter your nombre." />
                                 <p class="help-block text-white"></p>
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
                             </form>
