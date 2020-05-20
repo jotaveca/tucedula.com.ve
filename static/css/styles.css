@@ -10095,7 +10095,8 @@ h3 {
   font-size: 1.25rem;
 }
 .masthead .masthead-avatar {
-  width: 15rem;
+  /*width: 15rem;*/
+  width: 12rem;
 }
 
 @media (min-width: 992px) {
@@ -10104,7 +10105,8 @@ h3 {
     padding-bottom: 3rem;
   }
   .masthead .masthead-heading {
-    font-size: 4rem;
+    /*font-size: 4rem;*/
+    font-size: 3rem;
     line-height: 3.5rem;
   }
   .masthead .masthead-subheading {
