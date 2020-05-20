@@ -57,7 +57,9 @@
                         <div class="col-sm-4 mb-5 text-right "><img src="{% static 'assets/img/logo_tucedula 107x104.png'%}"/></div>
                         <div class="col-sm-8 mb-5 "> <h4 class="font-weight-light text-justify"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4></div>
                         <!-- Buscar por Cedula-->
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 ">
+                        <div class="card m-1 p-2">
+
                             <form action="/buscar_cedula/"  method="GET">
                                 <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Cédula:  </h5>
                                 <input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula" required="required" data-validation-required-message="Please enter your cédula." />
@@ -65,8 +67,10 @@
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_cedula" type="submit" value="Buscar">Buscar</button>
                             </form> 
                         </div>
+                        </div>
                         <!-- Buscar por Nombre-->
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 ">
+                        <div class="card m-1 p-2">
                             <form action="/buscar_nombre/" method="GET">
                                 <h5 class="page-section-sub-heading text-left text-uppercase text-secondary mb-4">Buscar por Nombres:  </h5>
                                 <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
@@ -74,14 +78,17 @@
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
                             </form>
                         </div>
+                        </div>
                         <!-- Cantidad de personas con el mismo nombre-->
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 ">
+                        <div class="card m-1 p-2">
                             <form action="/buscar_nombre_cantidad/" method="GET">
                                 <h5 class="page-section-sub-heading text-left text-uppercase text-secondary mb-0">¿Cuantas personas se llaman como yo?</h5>
                                 <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
                                 <p class="help-block text-white"></p>
                                 <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
                             </form>
+                        </div>
                         </div>
                     </div>
                 </div>

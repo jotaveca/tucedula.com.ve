@@ -28,7 +28,7 @@ urlpatterns = [
     path('nombre/', views.busqueda_nombre),
     path('buscar_nombre/', views.buscar_nombre),
     path('buscar_nombre_cantidad/', views.buscar_nombre_cantidad),
-    # path('mapa/', views.busqueda_mapa),
+    path('mapa/', views.busqueda_mapa),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

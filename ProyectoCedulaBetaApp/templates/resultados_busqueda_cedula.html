@@ -9,12 +9,14 @@
             <div class="col-sm-8 mb-5 "> <h4 class="font-weight-light text-justify"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4></div>
             <!-- Buscar por Cedula-->
             <div class="col-sm-4">
+            <div class="card p-2">
                 <form action="/buscar_cedula/"  method="GET">
                     <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Cédula:  </h5>
                     <input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula" required="required" data-validation-required-message="Please enter your cédula." />
                     <p class="help-block text-white"></p>
                     <button class="btn btn-primary btn-xl" id="btn_buscar_cedula" type="submit" value="Buscar">Buscar</button>
                 </form> 
+            </div>
             </div>
                         <!-- Tabla de Resultados por Cedula-->
             <div class="col-sm-8">           
