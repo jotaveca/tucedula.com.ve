@@ -2,33 +2,27 @@
 {% load static %}
 
 {% block main %}
-
-                 <!-- Contact Section Heading-->
+    <div class="row">
+        <!-- Buscar por Nombre-->
+        <div class="col-sm-4">
+        <div class="card p-2">
+            <form action="/buscar_nombre/"  method="GET">
+                <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Nombres:  </h5>
+                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
+                <p class="help-block text-white"></p>
+                <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
+            </form> 
+        </div>
+        </div>
+        <!-- Tabla de Resultados por Nombres-->
+        <div class="col-sm-8">           
+            <h2 class="page-section-sub-heading text-center text-uppercase text-secondary mb-0">Realice su Búsqueda{{query}}</h2>
+            <!-- Icon Divider-->
             <div class="divider-custom">
-                <div class="row">
-                    <div class="col-sm-4 mb-5 text-right "><img src="{% static 'assets/img/logo_tucedula 107x104.png'%}"/></div>
-                    <div class="col-sm-8 mb-5 "> <h4 class="font-weight-light text-justify"><b style="font-weight: bold;">TuCédula</b> es un servicio en internet para consultar, verificar y validar la información personal de los venezolanos, registrados en base de datos nacionales.</h4></div>
-                    <!-- Buscar por Nombre-->
-                    <div class="col-sm-4">
-                    <div class="card p-2">
-                        <form action="/buscar_nombre/"  method="GET">
-                            <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Nombres:  </h5>
-                            <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
-                            <p class="help-block text-white"></p>
-                            <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
-                        </form> 
-                    </div>
-                    </div>
-                    <!-- Tabla de Resultados por Nombres-->
-                    <div class="col-sm-8">           
-                        <h2 class="page-section-sub-heading text-center text-uppercase text-secondary mb-0">Realice su Busqueda{{query}}</h2>
-                        <!-- Icon Divider-->
-                        <div class="divider-custom">
-                            <div class="divider-custom-line"></div>
-                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                            <div class="divider-custom-line"></div>
-                        </div>
-                </div>
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
             </div>
-
+        </div>      
+    </div>
 {% endblock %} 

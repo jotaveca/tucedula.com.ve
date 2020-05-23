@@ -19,9 +19,18 @@
         }
       }
     });
-    
+
     //nav-link active 
-    $(document).ready(function () { var links = $('.navbar ul li a'); $.each(links, function (key, va) { if (va.href == document.URL) { $(this).addClass('active'); } }); });
+    $(document).ready(function () {
+     var url = window.location.pathname;
+      if(url=="/buscar_cedula/"){url="/cedula/";}
+      if(url=="/buscar_nombre/"){url="/nombre/";}
+      var links = $('.navbar ul li a'); $.each(links, function (key, va) {
+        if (va.pathname == url) {    // alert(va.pathname);
+          $(this).addClass('active'); 
+        } 
+      });
+    });
 
     // Scroll to top button appear
     $(document).scroll(function() {
@@ -39,10 +48,10 @@
     });
   
     // Activate scrollspy to add active class to navbar items on scroll
-    $('body').scrollspy({
-      target: '#mainNav',
-      offset: 80
-    });
+    // $('body').scrollspy({
+    //   target: '#mainNav',
+    //   offset: 80
+    // });
   
     // Collapse Navbar
     var navbarCollapse = function() {
