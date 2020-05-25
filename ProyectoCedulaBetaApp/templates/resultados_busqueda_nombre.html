@@ -8,7 +8,7 @@
         <div class="card p-2">
             <form action="/buscar_nombre/"  method="GET">
                 <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar por Nombres:  </h5>
-                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombre" required="required" data-validation-required-message="Please enter your nombre." />
+                <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombres y/o Apellidos" required="required" data-validation-required-message="Please enter your nombres y/o apellidos." />
                 <p class="help-block text-white"></p>
                 <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
             </form> 
@@ -52,9 +52,9 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         {% if page_obj.paginator.num_pages != 1 %}
-                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&page=1">First</a></li>
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&page=1">Primera</a></li>
                         {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">Primera</a></li>
                         {% endif %}
                         {% if page_obj.has_previous %}
                             <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
@@ -74,9 +74,9 @@
                             <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
                         {% endif %}
                         {% if page_obj.paginator.num_pages != page.number %}
-                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&page={{ page_obj.paginator.num_pages }}">Last</a></li>
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&page={{ page_obj.paginator.num_pages }}">Última</a></li>
                         {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="#">Last</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#">Última</a></li>
                         {% endif %}
                     </ul>
                 </nav>

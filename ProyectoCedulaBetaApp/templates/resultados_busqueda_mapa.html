@@ -1,0 +1,231 @@
+{% extends "index.html"%}
+{% load static %}
+
+{% block main %}
+    <div class="row">
+        <!-- Buscar por Nombre-->
+        <div class="col-sm-4">
+            <div class="card p-2">
+                <form action="/buscar_mapa/"  method="GET"> 
+                    <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar en el Mapa:  </h5>
+                    <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombres y/o Apellidos" required="required" data-validation-required-message="Please enter your nombres y/o apellidos." />
+                    <p class="help-block text-white"></p>
+                    <select  class="form-control" id="est" name="est" type="text" required="required" data-validation-required-message="Please enter your estado.">
+                        <option value="">Seleccione el Estado o País</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="amazonas">Amazonas</option>
+                        <option value="anzoategui">Anzoátegui</option>
+                        <option value="aragua">Aragua</option>
+                        <option value="apure">Apure</option>
+                        <option value="barinas">Barinas</option>
+                        <option value="bolivar">Bolívar</option>
+                        <option value="carabobo">Carabobo</option>
+                        <option value="cojedes">Cojedes</option>
+                        <option value="amacuro">Delta Amacuro</option>
+                        <option value="dependencias federales">Dependencias Federales</option>
+                        <option value="capital">Distrito Capital</option>
+                        <option value="falcon">Falcón</option>
+                        <option value="guarico">Guárico</option>
+                        <option value="vargas">La Guaira</option>
+                        <option value="Lara" >Lara</option>
+                        <option value="merida">Mérida</option>
+                        <option value="miranda" >Miranda</option>
+                        <option value="monagas">Monagas</option>
+                        <option value="portuguesa">Portuguesa</option>
+                        <option value="esparta">Nueva Esparta</option>
+                        <option value="sucre">Sucre</option>
+                        <option value="tachira">Táchira</option>
+                        <option value="trujillo">Trujillo</option>
+                        <option value="yaracuy">Yaracuy</option>
+                        <option value="zulia">Zulia</option>
+                    </select>
+                    <p class="help-block text-white"></p>
+                    <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
+                </form> 
+            </div>
+        </div>
+        <!-- Tabla de Resultados por Cedula-->
+        <div class="col-sm-8">           
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-sub-heading text-center text-uppercase text-secondary mb-0">Resultados en el Mapa de: {{query}} </h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <div class="form-control  text-uppercase text-center col-lg-9 ml-auto"><h5>Nombres encontrados en el Mapa: {{nombres|length}}</h5></div>
+
+            <head> 
+                <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+                <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/mapdata/countries/ve/ve-all.js"></script> 
+
+                <style>
+                    #container {
+                        height: 800px;
+                        max-width: 100%;
+                        margin: 0 auto;
+                    }
+                    .loading {
+                        margin-top: 10em;
+                        text-align: center;
+                        color: gray;
+                    }
+                </style>
+
+                <!-- Muestra el Mapa -->
+                <div id="container"></div>
+
+                <script>
+                    var data = [
+                    //  ['ve-3609', 0],
+                        ['ve-dp', {{ve_dp}}],
+                        ['ve-ne', {{ve_ne}}],
+                        ['ve-su', {{ve_su}}],
+                        ['ve-da', {{ve_da}}],
+                        ['ve-bo', {{ve_bo}}],
+                        ['ve-ap', {{ve_ap}}],
+                        ['ve-ba', {{ve_ba}}],
+                        ['ve-me', {{ve_me}}],
+                        ['ve-ta', {{ve_ta}}],
+                        ['ve-tr', {{ve_tr}}],
+                        ['ve-zu', {{ve_zu}}],
+                        ['ve-co', {{ve_co}}],
+                        ['ve-po', {{ve_po}}],
+                        ['ve-ca', {{ve_ca}}],
+                        ['ve-la', {{ve_la}}],
+                        ['ve-ya', {{ve_ya}}],
+                        ['ve-fa', {{ve_fa}}],
+                        ['ve-am', {{ve_am}}],
+                        ['ve-an', {{ve_an}}],
+                        ['ve-ar', {{ve_ar}}],
+                        ['ve-213', {{ve_lg}}],
+                        ['ve-df', {{ve_df}}],
+                        ['ve-gu', {{ve_gu}}],
+                        ['ve-mi', {{ve_mi}}],
+                        ['ve-mo', {{ve_mo}}]
+                    ];
+
+                    // Create the chart
+                    Highcharts.mapChart('container', {
+                        chart: {
+                            map: 'countries/ve/ve-all',
+                            //borderWidth: 1
+                        },
+                        title: {
+                            text: ''
+                        },
+                        subtitle: {
+                            text: ''
+                        },
+                        mapNavigation: {
+                            enabled: true,
+                            buttonOptions: {
+                                verticalAlign: 'bottom'
+                            }
+                        },
+                        colorAxis: {
+                            min: 0,
+                            minColor:'#e2e2e2',
+                            maxColor:'#1abc9c',
+                            //type: 'logarithmic'
+                        },
+                        legend: {
+                            title: {
+                                text: 'Nombres y/o Apellidos por Estado'
+                            }
+                        },
+                        tooltip: {
+                            valueSuffix: ' Nombres y/o Apellidos'
+                        },
+                        series: [{
+                            data: data,
+                            name: 'Estado',
+                            states: {
+                                hover: {
+                                    color: '#2c3e50'
+                                }
+                            },
+                            dataLabels: {
+                                enabled: true,
+                            //   format: '{point.name}'
+                            }
+                        }]
+                    });
+                </script>
+            </head>
+        </div> 
+    </div> 
+
+    <div class="row">
+        <!-- col -4 vacias -->
+        <div class="col-sm-4">
+        </div>
+        <!-- Tabla de Resultados por Cedula-->
+        <div class="col-sm-8">           
+            {% if page_obj%}
+                <!-- Tabla de Resultados por Nombres-->
+                <div class="table-responsive">
+                    <table  class="table  table-hover">
+                        <thead class="thead-light">
+                            <th ><h6 class="masthead-sub-heading text-uppercase mb-0 text-center" >Nombres y Apellidos</h6></th>
+                            <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Cédula </h6></th>
+                            <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Estado </h6></th>
+                            <th><h6 class="masthead-sub-heading text-uppercase mb-0 text-center"> Municipio </h6></th>
+                            {% comment %} <th><h5 class="masthead-heading text-uppercase mb-0 text-center"> Parroquia </h5></th> {% endcomment %}
+                        </thead>
+                        <tbody>
+                            {% for nom in page_obj %}
+                                <tr>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.tx_nombre_apellido}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.nu_cedula}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.tx_estado}}</h6></td>
+                                    <td><h6 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.tx_municipio}}</h6></td>
+                                    {% comment %} <td><h5 class="masthead-heading font-weight-light text-uppercase mb-0 text-center" >{{nom.parroquia}}</h5></td> {% endcomment %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- paginacion de la tabla -->
+                {% if page_obj.paginator.num_pages > 1 %}
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.paginator.num_pages != 1 %}
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&est={{ request.GET.est }}&page=1">Primera</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Primera</a></li>
+                        {% endif %}
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&est={{ request.GET.est }}&page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                        {% endif %}
+                        {% for i in page_obj.paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a></li>
+                            {% elif page_obj.number > i|add:"-5" and page_obj.number < i|add:"+5"%}
+                                <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&est={{ request.GET.est }}&page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&est={{ request.GET.est }}&page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                        {% endif %}
+                        {% if page_obj.paginator.num_pages != page.number %}
+                            <li class="page-item"><a class="page-link" href="?nom={{ request.GET.nom }}&est={{ request.GET.est }}&page={{ page_obj.paginator.num_pages }}">Última</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Última</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+                {% comment %} <div class="form-control  text-uppercase text-center col-lg-8 ml-auto"><h5>Nombres encontrados en el Mapa: {{nombres|length}}</h5></div> {% endcomment %}
+            {% else %}
+                {% comment %} <div class="form-control  text-uppercase text-center col-lg-8 ml-auto"><h5>Nombres encontrados en el Mapa: {{nombres|length}}</h5></div> {% endcomment %}
+            {% endif %}
+        </div>   
+    </div>
+{% endblock %} 

@@ -4,145 +4,58 @@
 {% block main %}
 
 <div>
-    <!-- Contact Section Heading-->
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Buscar por Mapa</h2>
-    <!-- Icon Divider-->
-    <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-        <div class="divider-custom-line"></div>
-    </div>
-<head> 
-<title>Simple Map</title>
-<script src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/mapdata/countries/ve/ve-all.js"></script> 
-{% comment %} <script src="{% static 'mapa_tucedula/exporting.js' %}"></script>
-<script src="{% static 'mapa_tucedula/ve-all.js' %}"></script>
-<script src="{% static 'mapa_tucedula/highmaps.js' %}"></script> {% endcomment %}
-
-
-<style>
-    #container {
-        height: 800px;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    .loading {
-        margin-top: 10em;
-        text-align: center;
-        color: gray;
-    }
- </style>
-<div id="container"></div>
-
-<script>
-
-// Prepare demo data
-// Data is joined to map using value of 'hc-key' property by default.
-// See API docs for 'joinBy' for more info on linking data and map.
-var data = [
-  //  ['ve-3609', 0],
-    ['ve-dp', 1],
-    ['ve-ne', 2],
-    ['ve-su', 3],
-    ['ve-da', 4],
-    ['ve-bo', 5],
-    ['ve-ap', 6],
-    ['ve-ba', 7],
-    ['ve-me', 8],
-    ['ve-ta', 9],
-    ['ve-tr', 10],
-    ['ve-zu', 11],
-    ['ve-co', 12],
-    ['ve-po', 13],
-    ['ve-ca', 14],
-    ['ve-la', 15],
-    ['ve-ya', 16],
-    ['ve-fa', 17],
-    ['ve-am', 18],
-    ['ve-an', 19],
-    ['ve-ar', 20],
-    ['ve-213', 21],
-    ['ve-df', 22],
-    ['ve-gu', 23],
-    ['ve-mi', 123],
-    ['ve-mo', 25]
-];
-
-// Create the chart
-Highcharts.mapChart('container', {
-    chart: {
-        map: 'countries/ve/ve-all'
-    },
-
-    title: {
-        text: ''
-    },
-
-    subtitle: {
-        text: ''
-    },
-
-    mapNavigation: {
-        enabled: true,
-        buttonOptions: {
-            verticalAlign: 'bottom'
-        }
-    },
-
-    colorAxis: {
-        min: 0
-    },
-
-    series: [{
-        data: data,
-        name: 'Estado',
-        states: {
-            hover: {
-                color: '#BADA55'
-            }
-        },
-        dataLabels: {
-            enabled: true,
-         //   format: '{point.name}'
-        }
-    }]
-});
-
-    </script>
-  </head>
-  {% comment %} 
-    <meta charset="utf-8"><title>Curso JavaScript aprenderaprogramar.com</title>
-    <style> *{font-family:sans-serif;}
-                h1 {margin: 150px 0 30px 0; text-align:center; }
-                #lienzoMapa {width:800px; height:600px; margin: 0 auto; border: 5px solid; }
-    </style>
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script>
- <script async defer "http://maps.google.com/maps/api/js?sensor=false"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap">
-</script>
-        var map;
-        function initialize() {
-        var mapOptions = {
-            zoom: 15,
-            center: new google.maps.LatLng(10.509769,-66.911344)
-        };
-        map = new google.maps.Map(document.getElementById('lienzoMapa'), mapOptions);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script> {% endcomment %}
-
-
-    <form action="/buscar_cedula/" method="GET">
-        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-            <label>Cédula</label><input class="form-control" id="ced" name="ced" type="text" placeholder="Cédula" required="required" data-validation-required-message="Please enter your cédula." />
-            <p class="help-block text-white"></p>
+    <div class="row">
+        <!-- Buscar por Nombre-->
+        <div class="col-sm-4">
+            <div class="card p-2">
+                <form action="/buscar_mapa/"  method="GET"> 
+                    <h5 class="page-section-sub-heading text-left  text-uppercase text-secondary mb-4">Buscar en el Mapa:  </h5>
+                    <input class="form-control" id="nom" name="nom" type="text" placeholder="Nombres y/o Apellidos" required="required" data-validation-required-message="Please enter your nombres y/o apellidos." />
+                    <p class="help-block text-white"></p>
+                    <select  class="form-control" id="est" name="est" type="text" required="required" data-validation-required-message="Please enter your estado.">
+                        <option value="">Seleccione el Estado o País</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="amazonas">Amazonas</option>
+                        <option value="anzoategui">Anzoátegui</option>
+                        <option value="aragua">Aragua</option>
+                        <option value="apure">Apure</option>
+                        <option value="barinas">Barinas</option>
+                        <option value="bolivar">Bolívar</option>
+                        <option value="carabobo">Carabobo</option>
+                        <option value="cojedes">Cojedes</option>
+                        <option value="amacuro">Delta Amacuro</option>
+                        <option value="dependencias federales">Dependencias Federales</option>
+                        <option value="capital">Distrito Capital</option>
+                        <option value="falcon">Falcón</option>
+                        <option value="guarico">Guárico</option>
+                        <option value="vargas">La Guaira</option>
+                        <option value="Lara" >Lara</option>
+                        <option value="merida">Mérida</option>
+                        <option value="miranda" >Miranda</option>
+                        <option value="monagas">Monagas</option>
+                        <option value="portuguesa">Portuguesa</option>
+                        <option value="esparta">Nueva Esparta</option>
+                        <option value="sucre">Sucre</option>
+                        <option value="tachira">Táchira</option>
+                        <option value="trujillo">Trujillo</option>
+                        <option value="yaracuy">Yaracuy</option>
+                        <option value="zulia">Zulia</option>
+                    </select>
+                    <p class="help-block text-white"></p>    
+                    <button class="btn btn-primary btn-xl" id="btn_buscar_nombre" type="submit" value="Buscar">Buscar</button>
+                </form> 
+            </div>
         </div>
-        <button class="btn btn-primary btn-xl" id="btn_buscar_cedula" type="submit" value="Buscar">Buscar</button>
-    </form> 
-</div>
-
+        <!-- Tabla de Resultados por Cedula-->
+        <div class="col-sm-8">           
+            <h2 class="page-section-sub-heading text-center text-uppercase text-secondary mb-0">Realice su Búsqueda{{query}}</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
 {% endblock %} 
 
  

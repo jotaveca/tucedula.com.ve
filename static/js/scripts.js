@@ -25,6 +25,7 @@
      var url = window.location.pathname;
       if(url=="/buscar_cedula/"){url="/cedula/";}
       if(url=="/buscar_nombre/"){url="/nombre/";}
+      if(url=="/buscar_mapa/"){url="/mapa/";}
       var links = $('.navbar ul li a'); $.each(links, function (key, va) {
         if (va.pathname == url) {    // alert(va.pathname);
           $(this).addClass('active'); 
